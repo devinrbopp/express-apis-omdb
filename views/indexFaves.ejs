@@ -1,0 +1,9 @@
+<h1>All Your Favorite Movies</h1>
+<% results.forEach(result => { %>
+    <h3>
+        <a href="/movies/<%= result.imdbId %>"><%= result.title %></a>
+    </h3>
+    <form action="/faves/<%= result.id %>?_method=DELETE" method="POST">
+        <button type="submit">Remove From Faves</button>
+    </form>
+<% }) %> 

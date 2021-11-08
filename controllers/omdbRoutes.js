@@ -24,17 +24,18 @@ router.get('/:movie_id', function(req, res) {
     // this console.log displays our request object
     // console.log('this is req.query',req.query)
     let imdbId = req.params.movie_id
-    console.log('this is the movie title:', imdbId)
+    // console.log('this is the movie title:', imdbId)
     // now we can use the movie title to build the request url, and make the call with axios
     axios.get(`http://www.omdbapi.com/?apikey=${process.env.OMBD_API_KEY}&i=${imdbId}`)
       .then(apiRes => {
-        console.log('this is apiRes.data', apiRes.data)
+        // console.log('this is apiRes.data', apiRes.data)
         let title = apiRes.data.Title
         let year = apiRes.data.Year
         let plot = apiRes.data.Plot
         let imdbID = apiRes.data.imdbID
+        let poster = apiRes.data.Poster
         // res.render results to results.ejs, with our selected data sent as an object
-        res.render('detail.ejs', {title, year, plot, imdbID})
+        res.render('detail.ejs', {title, year, plot, imdbID, poster})
       })
       .catch(err => {
         console.log(err)
