@@ -1,2 +1,14 @@
-<% // Render your search results here %>
-<% // This is how to do comments in EJS, by the way... %>
+<% if (results === undefined) { %>
+    <h3>No movies found</h3>
+    <small>Check your spelling and punctuation and try again</small>
+
+<% } else { %>
+    <ul>
+        <% results.forEach(function(result) { %>
+            <li>
+                <a href="/movies/<%= result.imdbID %>"><%= result.Title %></a>
+                <small>(<%= result.Type %>)</small>
+            </li>
+        <% }) %> 
+    </ul>
+<% } %>
